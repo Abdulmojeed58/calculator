@@ -67,7 +67,7 @@
 .numbers {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
+    gap: 25px;
     row-gap: 10px;
     /* padding: 14px 0 5px 25px; */
     font-weight: lighter;
@@ -115,7 +115,7 @@
     padding-left: 20px;
     grid-column: span 2;
     border-radius: 35px;
-    width: 200px;
+    width: 173px;
 }
 .plus {
     justify-self: flex-start;
