@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+.calculator {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background-color: rgba(0 0 0/.5);
+}
+.container {
+    background-color: blue;
+    width: 250px;
+    /* width: 300px; */
+    background-color: black;
+    height: 385px;
+    border-radius: 10px;
+
+}
+.text-container {
+    width: auto;
+    /* background-color: rgba(0 0 0/1); */
+    /* background-color: green; */
+    text-align: right;
+    padding-top: 1rem;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: lighter;
+    height: 70px;
+    color: white;
+    word-wrap: break-word;
+}
+.text2 {
+    font-size: 1.2rem;
+    cursor: pointer;
+    /* background-color: green; */
+}
+.text {
+    font-size: 2rem;
+    cursor: pointer;
+    /* background-color: green; */
+    z-index: 2;
+    /* background-color: yellow; */
+}
+.text-ans {
+    width: auto;
+    height: 100%;
+    font-size: 2rem;
+    /* background-color: red; */
+    /* display: none; */
+}
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    row-gap: 10px;
+    padding: 14px 0 10px 5px;
+    font-weight: lighter;
+    cursor: pointer;
+    /* padding-bottom: 10px; */
+}
+
+.content {
+    background-color: rgba(255 255 255/.15);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.content:hover {
+    background-color: rgba(255 255 255/.3);
+}
+
+.yellow {
+    background-color: orangered;
+}
+.yellow:hover {
+    background-color: rgba(255, 69, 0, .7);
+}
+.top {
+    color: black;
+    background-color: rgba(255 255 255/ .65);
+}
+.top:hover {
+    background-color: rgba(255 255 255/ 1);
+}
+.flex {
+    display: flex;
+    /* flex-direction: column; */
+}
+.zero {
+    justify-content: flex-start;
+    padding-left: 20px;
+    grid-column: span 2;
+    border-radius: 25px;
+    width: 110px;
+}
+.plus {
+    justify-self: flex-start;
+    height: 10px;
+    font-size: 15px;
+    font-weight: 700;
+}
+.zero h2 {
+    width: 100%;
+}
