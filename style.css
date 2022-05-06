@@ -42,12 +42,14 @@
     /* background-color: green; */
 }
 .text {
-    font-size: 2rem;
+    font-size: 2.3rem;
     cursor: pointer;
     /* background-color: green; */
     z-index: 2;
     /* background-color: yellow; */
     height: 80px;
+    margin-top: 5px;
+    padding-top: 30px;
 }
 .text-ans {
     width: auto;
@@ -94,10 +96,10 @@
 }
 
 .yellow {
-    background-color: orangered;
+    background-color: orange;
 }
 .yellow:hover {
-    background-color: rgba(255, 69, 0, .7);
+    background-color: rgba(255, 165, 0, .7);
 }
 .top {
     color: black;

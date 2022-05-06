@@ -4,23 +4,50 @@ class Cal {
         this.currentNumber = currentNumber;
     }
     display(e) {
-        if(this.previousNumber.innerHTML.length < 15) {
+        if(e.target.innerHTML === "." && this.previousNumber.innerHTML.includes(".")) return
 
-            const content = e.target.innerHTML
-                this.previousNumber.innerHTML += content
-        }
+            if(this.previousNumber.innerHTML.length < 15) {
+    
+                const content = e.target.innerHTML
+                    this.previousNumber.innerHTML += content
+            }
+        
     }
     clearField() {
         this.previousNumber.innerHTML = ""
         this.currentNumber.innerHTML = ""
     }
-    operate() {
+    operate(operation) {
+        this.operation = operation
         this.currentNumber.innerHTML = this.previousNumber.innerHTML;
         this.previousNumber.innerHTML = ""
     }
     equals() {
-        const add = parseInt(this.currentNumber.innerHTML) + parseInt(this.previousNumber.innerHTML);
-        this.previousNumber.innerHTML = add
+        let compute;
+        let first = parseInt(this.currentNumber.innerHTML);
+        let second = parseInt(this.previousNumber.innerHTML);
+        if(!this.currentNumber.innerHTML || !this.previousNumber.innerHTML) return
+        if(isNaN(first) || isNaN(second)) return
+        switch(this.operation) {
+            case "+":
+                compute = first + second
+                break
+        
+            case "-":
+                compute = first - second
+                break
+        
+            case "X":
+                compute = first * second
+                break
+        
+            case "/":
+                compute = first / second
+                break
+            default:
+                return
+        }
+        this.previousNumber.innerHTML = compute
         this.currentNumber.innerHTML = ''
     }
 }
@@ -46,7 +73,7 @@ clear.addEventListener("click", ()=>{
 const operations = document.querySelectorAll("[data-operation");
 operations.forEach(operation=>{
     operation.addEventListener("click", ()=>{
-        calculator.operate()
+        calculator.operate(operation.innerHTML)
     })
 })
 
@@ -65,19 +92,3 @@ equals.addEventListener("click", ()=>{
 
 
 
-// const numbers = document.querySelectorAll("[data-id]");
-// const text = document.querySelector(".text")
-// numbers.forEach((num)=>{
-//     num.addEventListener("click", (e)=>{
-//         if(text.innerHTML.length<25) {
-
-//             let previousNumber = e.target.textContent;
-//             text.innerHTML += previousNumber
-//         }
-//     })
-// })
-
-// const ac = document.querySelector(".ac")
-// ac.addEventListener("click", ()=>{
-//     text.innerHTML = ''
-// })
