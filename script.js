@@ -1,3 +1,5 @@
+let all = false
+
 class Cal {
     constructor(previousNumber, currentNumber) {
         this.previousNumber = previousNumber;
@@ -14,13 +16,24 @@ class Cal {
         
     }
     clearField() {
+        
         this.previousNumber.innerHTML = ""
         this.currentNumber.innerHTML = ""
     }
+    slice() {
+        this.previousNumber.innerHTML = this.previousNumber.innerHTML.slice(0, -1)
+    }
     operate(operation) {
         this.operation = operation
-        this.currentNumber.innerHTML = this.previousNumber.innerHTML;
+            
+        // if(this.operation = "Rand") {
+        //     this.previousNumber.innerHTML = Math.random()
+        //     this.currentNumber.innerHTML = ""
+        //     all = true
+        // } else {
+            this.currentNumber.innerHTML = this.previousNumber.innerHTML;
         this.previousNumber.innerHTML = ""
+        // }
     }
     equals() {
         let compute;
@@ -44,6 +57,7 @@ class Cal {
             case "/":
                 compute = first / second
                 break
+            
             default:
                 return
         }
@@ -57,22 +71,49 @@ const text = document.querySelector(".text")
 const text2 = document.querySelector(".text2")
 const calculator = new Cal(text, text2)
 
+const clear = document.querySelector(".ac")
 
 const numbers = document.querySelectorAll("[data-id]");
 numbers.forEach(num=>{
     num.addEventListener("click", (e)=>{
                 calculator.display(e)
+                if(text.innerHTML.length < 2 && !text2.innerHTML) {
+
+                    clear.innerHTML = "AC"
+                } else { 
+                    clear.innerHTML = "C"
+                    all = false
+                }
             })
         })
 
-const clear = document.querySelector(".ac")
 clear.addEventListener("click", ()=>{
-    calculator.clearField()
+    if(text.innerHTML.length < 2 && !text2.innerHTML) {
+        all = true
+    }
+    if(all) {
+        calculator.clearField()
+        all = false
+    } 
+    else {
+        calculator.slice()
+        if(text.innerHTML.length < 2 && !text2.innerHTML) {
+            all = true
+            clear.innerHTML = "AC"
+        }
+        
+    }
+    
 })    
+
+
 
 const operations = document.querySelectorAll("[data-operation");
 operations.forEach(operation=>{
     operation.addEventListener("click", ()=>{
+        if(text2.innerHTML){
+            calculator.equals()
+        }
         calculator.operate(operation.innerHTML)
     })
 })
@@ -80,6 +121,8 @@ operations.forEach(operation=>{
 const equals = document.querySelector("[data-equal")
 equals.addEventListener("click", ()=>{
     calculator.equals()
+    all = true
+    clear.innerHTML = "AC"
 })
     
 
