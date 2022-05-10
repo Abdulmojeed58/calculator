@@ -176,7 +176,7 @@
         grid-template-columns: repeat(10, 1fr);
         height: auto;
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
     .content {
         border-radius: 40%;
