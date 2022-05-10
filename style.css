@@ -89,8 +89,8 @@
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     /* gap: 5px; */
-    gap: 8px;
-    /* row-gap: 5px; */
+    gap: 10px;
+    row-gap: 5px;
     /* padding: 14px 0 5px 25px; */
     font-weight: lighter;
     cursor: pointer;
@@ -108,8 +108,8 @@
 .content {
     background-color: rgba(255 255 255/.15);
     border-radius: 50%;
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,7 +142,7 @@
     grid-column: span 2;
     border-radius: 0;
     border-radius: 35px;
-    width: 138px;
+    width: 150px;
 }
 .plus {
     justify-self: flex-start;
@@ -164,7 +164,7 @@
 }
 
 
-@media (min-width: 700px){
+@media (min-width: 550px){
     .container {
         width: 100vw;
         max-width: 2000px;
