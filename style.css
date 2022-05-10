@@ -43,8 +43,8 @@
 .text2 {
     font-size: 1.2rem;
     cursor: pointer;
-    /* background-color: blue; */
     background-color: inherit;
+    /* background-color: blue; */
     padding-left: 5px;
     padding-right: 5px;
     height: 30px;
@@ -55,8 +55,8 @@
     cursor: pointer;
     /* background-color: green; */
     z-index: 2;
-    /* background-color: yellow; */
     background-color: inherit;
+    /* background-color: yellow; */
     height: 80px;
     margin-top: 5px;
     padding-top: 30px;
@@ -177,15 +177,30 @@
     }
     .content {
         border-radius: 46%;
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         font-size: 1em;
     }
     .zero {
         border-radius: 35px;
-        width: 108px;
+        width: 120px;
     }
     .numbers {
         height: auto;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .wrapper {
+        bottom: 5%;
+    }
+    .text2 {
+        height: auto;
+    }
+    .text {
+        height: auto;
+        padding-top: auto;
+    }
+    .text-container {
+        padding-top: .5em;
     }
 }
