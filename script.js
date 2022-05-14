@@ -1,5 +1,5 @@
 let all = false
-
+const m = document.querySelector(".m")
 window.addEventListener("DOMContentLoaded", ()=>{
     const func = document.querySelector(".func")
     func.classList.add("active")
@@ -28,24 +28,22 @@ class Cal {
         this.currentNumber.innerHTML = ""
     }
     slice() {
-        this.previousNumber.innerHTML = this.previousNumber.innerHTML.slice(0, -1)
+        if(this.previousNumber.innerHTML){
+            this.previousNumber.innerHTML = this.previousNumber.innerHTML.slice(0, -1)
+        }
+         else if(!this.previousNumber.innerHTML) {
+            this.clearField()
+        }
     }
     operate(operation) {
         this.operation = operation
-            
-        // if(this.operation = "Rand") {
-        //     this.previousNumber.innerHTML = Math.random()
-        //     this.currentNumber.innerHTML = ""
-        //     all = true
-        // } else {
             this.currentNumber.innerHTML = this.previousNumber.innerHTML;
         this.previousNumber.innerHTML = ""
-        // }
     }
     equals() {
         let compute;
-        let first = parseInt(this.currentNumber.innerHTML);
-        let second = parseInt(this.previousNumber.innerHTML);
+        let first = parseFloat(this.currentNumber.innerHTML);
+        let second = parseFloat(this.previousNumber.innerHTML);
         if(!this.currentNumber.innerHTML || !this.previousNumber.innerHTML) return
         if(isNaN(first) || isNaN(second)) return
         switch(this.operation) {
@@ -71,6 +69,47 @@ class Cal {
         this.previousNumber.innerHTML = compute
         this.currentNumber.innerHTML = ''
     }
+    operateB(operation) {
+        this.operation = operation
+        // if(!this.previousNumber.innerHTML || this.currentNumber.innerHTML) return
+        let compute;
+        // if(this.previousNumber.innerHTML) {
+            switch(this.operation) {
+                case "Rand":
+                        compute = Math.random()
+                    break
+                case `${m.innerHTML}`:
+                    compute = Math.PI
+                    break
+                case "tanh":
+                    compute = Math.tanh(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "cosh":
+                    compute = Math.cosh(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "sinh":
+                    compute = Math.sinh(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "x!":
+                    compute = factorial(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "sin":
+                    compute = Math.sin(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "cos":
+                    compute = Math.cos(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "tan":
+                    compute = Math.tan(parseFloat(this.previousNumber.innerHTML))
+                    break
+                case "ln":
+                    compute = Math.random()
+            }
+        // } else if(!this.previousNumber.innerHTML && !this.currentNumber.innerHTML){
+
+        // }
+        this.previousNumber.innerHTML = compute
+    }
 }
 
 
@@ -95,7 +134,7 @@ numbers.forEach(num=>{
         })
 
 clear.addEventListener("click", ()=>{
-    if(text.innerHTML.length < 2 && !text2.innerHTML) {
+    if(text.innerHTML.length < 1 && !text2.innerHTML) {
         all = true
     }
     if(all) {
@@ -132,6 +171,27 @@ equals.addEventListener("click", ()=>{
     clear.innerHTML = "AC"
 })
     
+const operations2 = document.querySelectorAll("[data-operation2");
+operations2.forEach(operation=>{
+    operation.addEventListener("click", (e)=>{
+        calculator.operateB(operation.innerHTML)
+        all = true
+    clear.innerHTML = "AC"
+    })
+})
+
+
+////// FACTORIAL //////
+let f = [];
+function factorial (n) {
+    if (n === 0 || n === 1){
+        return 1;
+    }
+    if (f[n] > 0) {
+        return f[n]
+    }
+    return f[n] = factorial(n-1) * n;
+}
 
 
    
