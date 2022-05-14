@@ -225,16 +225,16 @@
 
 @media (min-width: 650px) {
     .numbers {
-        /* background-color: red; */
+        background-color: red;
         width: 100%;
-        max-width: 750px;
+        max-width: 700px;
     }
     .content {
-        width: 60px;
+        width: 55px;
         border-radius: 35%;
     }
     .zero {
-        width: 130px;
+        width: 125px;
         border-radius: calc(35px - 10%);
     }
 }
