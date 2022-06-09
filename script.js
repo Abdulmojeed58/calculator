@@ -1,5 +1,19 @@
 let all = false
+
 const m = document.querySelector(".m")
+const a = document.querySelector(".a")
+const b = document.querySelector(".b")
+const c = document.querySelector(".c")
+const d = document.querySelector(".d")
+const e = document.querySelector(".e")
+const g = document.querySelector(".g")
+const h = document.querySelector(".h")
+const i = document.querySelector(".i")
+const j = document.querySelector(".j")
+const k = document.querySelector(".k")
+const l = document.querySelector(".l")
+
+
 window.addEventListener("DOMContentLoaded", ()=>{
     const func = document.querySelector(".func")
     func.classList.add("active")
@@ -7,6 +21,8 @@ window.addEventListener("DOMContentLoaded", ()=>{
         func.classList.remove("active")
     }, 4000)
 })
+
+
 class Cal {
     constructor(previousNumber, currentNumber) {
         this.previousNumber = previousNumber;
@@ -19,14 +35,18 @@ class Cal {
     
                 const content = e.target.innerHTML
                     this.previousNumber.innerHTML += content
+                    
             }
         
     }
+
     clearField() {
         
-        this.previousNumber.innerHTML = ""
+        this.previousNumber.innerHTML = 0
         this.currentNumber.innerHTML = ""
+        // text.innerHTML = 0
     }
+
     slice() {
         if(this.previousNumber.innerHTML){
             this.previousNumber.innerHTML = this.previousNumber.innerHTML.slice(0, -1)
@@ -35,11 +55,14 @@ class Cal {
             this.clearField()
         }
     }
+
     operate(operation) {
         this.operation = operation
+
             this.currentNumber.innerHTML = this.previousNumber.innerHTML;
         this.previousNumber.innerHTML = ""
     }
+
     equals() {
         let compute;
         let first = parseFloat(this.currentNumber.innerHTML);
@@ -59,9 +82,15 @@ class Cal {
                 compute = first * second
                 break
         
-            case "/":
+            case `${e.innerHTML}`:
                 compute = first / second
                 break
+            case `${b.innerHTML}`:
+                compute = first ** second
+                break
+            case `${i.innerHTML}`:
+                compute = Math.pow(first, 1/second)
+                break;
             
             default:
                 return
@@ -69,18 +98,18 @@ class Cal {
         this.previousNumber.innerHTML = compute
         this.currentNumber.innerHTML = ''
     }
+
     operateB(operation) {
         this.operation = operation
-        // if(!this.previousNumber.innerHTML || this.currentNumber.innerHTML) return
         let compute;
-        // if(this.previousNumber.innerHTML) {
+      
+
+        if(this.previousNumber.innerHTML !== '') {
             switch(this.operation) {
                 case "Rand":
                         compute = Math.random()
                     break
-                case `${m.innerHTML}`:
-                    compute = Math.PI
-                    break
+                
                 case "tanh":
                     compute = Math.tanh(parseFloat(this.previousNumber.innerHTML))
                     break
@@ -102,13 +131,68 @@ class Cal {
                 case "tan":
                     compute = Math.tan(parseFloat(this.previousNumber.innerHTML))
                     break
+                case `${m.innerHTML}`:
+                    compute = Math.PI
+                    break;
                 case "ln":
                     compute = Math.random()
-            }
-        // } else if(!this.previousNumber.innerHTML && !this.currentNumber.innerHTML){
+                    break;
+                case "e":
+                    compute = Math.exp(1)
+                    break;
+                case "EE":
+                    compute = 10 ** this.previousNumber.innerHTML
+                    break;
+                case "log10":
+                    compute = Math.log10(this.previousNumber.innerHTML)
+                    break;
+                case `${a.innerHTML}`:
+                    compute = this.previousNumber.innerHTML ** 3
+                    break;
+                case `${c.innerHTML}`:
+                    compute = this.previousNumber.innerHTML ** 2
+                    break;
+                case `${d.innerHTML}`:
+                    compute = this.previousNumber.innerHTML / 4 
+                    break;
+                case `${g.innerHTML}`:
+                    compute = Math.sqrt(this.previousNumber.innerHTML)
+                    break;
+                case `${h.innerHTML}`:
+                    compute = Math.cbrt(this.previousNumber.innerHTML)
+                    break;
+                case '%':
+                    compute = this.previousNumber.innerHTML/100
+                    break;
+                case `${j.innerHTML}`:
+                    compute = 10 ** this.previousNumber.innerHTML
+                    break;
+                case `${k.innerHTML}`:
+                    compute = Math.exp(this.previousNumber.innerHTML)
+                    break;
+                case `${l.innerHTML}`:
+                    if(!this.previousNumber.innerHTML.includes('-')) {
 
-        // }
-        this.previousNumber.innerHTML = compute
+                        let v = this.previousNumber.innerHTML
+                        let w = v.split('')
+                        w.unshift('-')
+                        let x = w.join('')
+                        compute = parseFloat(x)
+                    } else {
+                        compute = this.previousNumber.innerHTML.replace('-', '')
+                    }
+                    break;
+                
+            }
+            if(isNaN(compute) || compute == -Infinity || compute == Infinity){
+                compute = `Error`
+                this.previousNumber.innerHTML = compute
+            } else {
+
+                this.previousNumber.innerHTML = compute
+            }
+        } 
+       
     }
 }
 
@@ -122,6 +206,9 @@ const clear = document.querySelector(".ac")
 const numbers = document.querySelectorAll("[data-id]");
 numbers.forEach(num=>{
     num.addEventListener("click", (e)=>{
+        if(text.textContent == 0 && text.textContent.length == 1){
+            text.innerHTML = ''
+        }
                 calculator.display(e)
                 if(text.innerHTML.length < 2 && !text2.innerHTML) {
 
@@ -134,7 +221,7 @@ numbers.forEach(num=>{
         })
 
 clear.addEventListener("click", ()=>{
-    if(text.innerHTML.length < 1 && !text2.innerHTML) {
+    if(text.innerHTML.length < 2 && !text2.innerHTML) {
         all = true
     }
     if(all) {
@@ -194,8 +281,8 @@ function factorial (n) {
 }
 
 
-   
-    
+
+
 
 
 
