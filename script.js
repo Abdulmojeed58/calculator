@@ -14,12 +14,13 @@ const k = document.querySelector(".k")
 const l = document.querySelector(".l")
 
 
+////   MODAL ////////////
 window.addEventListener("DOMContentLoaded", ()=>{
     const func = document.querySelector(".func")
     func.classList.add("active")
     setTimeout(()=>{
         func.classList.remove("active")
-    }, 4000)
+    }, 2000)
 })
 
 
